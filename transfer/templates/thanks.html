@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<b>Check Email for OTP</b>
+<form id = "otpform" method="post">{% csrf_token %}
+    {{ form|crispy }}
+    <input class="btn btn-primary" type="submit" value="Verify">
+</form>
+<script type="text/javascript">
+$('#otpform').on('submit', function(event){
+    event.preventDefault();
+    console.log("form submitted!")  // sanity check
+
+	i = document.getElementById('id_OTP').value
+	if (i == {{request.session.otp}}) {
+  alert('Succesfully Submitted !');
+} else {
+  alert('Check !');
+}
+});
+</script>
+
+{% endblock %}

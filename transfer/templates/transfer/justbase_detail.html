@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% block content %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    <tr>
+      <th scope="row">1</th>
+      <td>Name of the Candidate </td>
+      <td>{{object.name}}</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Father’s Name  </td>
+      <td>{{object.father}}</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Pin No./Roll No  </td>
+      <td>{{object.regno}}</td>
+    </tr>
+    <tr>
+      <th scope="row">4</th>
+      <td>Year of Admission  </td>
+      <td>{{object.year}}</td>
+    </tr>
+    <tr>
+      <th scope="row">5</th>
+      <td>Branch  </td>
+      <td>{{object.branch}}</td>
+    </tr>
+    <tr>
+      <th scope="row">6</th>
+      <td>Class, Year & Semester; the candidate studied during the academic year 2019-20  </td>
+      <td>{{object.get_prclass_display}}</td>
+    </tr>
+    <tr>
+      <th scope="row">7</th>
+      <td>The College with address from which the student is  seeking transfer now & name of Affiliating University  </td>
+      <td>{{object.get_prcollege_display}}<br>{{object.get_auniv_display}}</td>
+    </tr>
+    <tr>
+      <th scope="row">8</th>
+      <td>The College with address to which the student is  seeking transfer now & name of Affiliating University  </td>
+      <td>{{object.get_college_display}}<br>{{object.get_sauniv_display}}</td>
+    </tr>
+    <tr>
+      <th scope="row">9</th>
+      <td>Class, Year & Semester; the candidate seeking transfer during the academic year 2020-21  </td>
+      <td>SEEKING CLASS</td>
+    </tr>
+    <tr>
+      <th scope="row">10</th>
+      <td>Details of NoC issued by the college from which the transfer is requested  </td>
+      <td>{{object.prnoc_number}}<br>{{object.prnoc_date}}</td>
+    </tr>
+    <tr>
+      <th scope="row">11</th>
+      <td>Details of NoC issued by the college to which the transfer is sought </td>
+      <td>{{object.snoc_number}}<br>{{object.snoc_date}}</td>
+    </tr>
+    <tr>
+      <th scope="row">12</th>
+      <td>Reason for transfer  </td>
+      <td>{{object.get_reason_display}}</td>
+    </tr>
+    <tr>
+      <th scope="row">13</th>
+      <td>Supporting documents enclosed  </td>
+      <td>{{object.doc}}</td>
+    </tr>
+
+    
+  </tbody>
+</table>
+
+<a class="btn btn-primary" href="{% url 'transfer:thanks' object.pk %}">Proceed</a>
+<a class="btn btn-primary" href="{% url 'transfer:update' object.pk %}">Edit</a>
+
+{% endblock %}
